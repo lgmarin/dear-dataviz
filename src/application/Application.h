@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ui/WindowManager.h"
+#include "../ui/WindowManager.h"
 
 // Forward declare SDL types to avoid including SDL headers in our header.
 struct SDL_Window;

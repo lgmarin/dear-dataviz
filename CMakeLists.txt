@@ -8,14 +8,18 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # --- Dependencies ---
 # Find the SDL2 package. The dev container has this installed.
 find_package(SDL2 REQUIRED)
-
-# Add Catch2 as a subdirectory. This is correct as Catch2 is CMake-friendly.
 add_subdirectory(libs/catch2)
 
 # --- Source Code ---
-# Add the source directory for our main application.
-# NOTE: We do NOT add imgui here. It will be handled inside src/CMakeLists.txt
 add_subdirectory(src)
+
+# --- Main Executable ---
+# Create the final application executable from the root main.cpp.
+add_executable(dear_dataviz src/main.cpp)
+
+# Link the executable against our application logic library.
+# This will transitively link dataviz_ui and all its dependencies.
+target_link_libraries(dear_dataviz PRIVATE dataviz_app)
 
 # --- Testing ---
 # Enable testing and add the 'test' directory (singular).

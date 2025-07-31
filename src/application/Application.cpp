@@ -6,7 +6,7 @@
 #include "imgui_impl_sdlrenderer2.h"
 
 // Include the concrete window types
-#include "ui/MainWindow.h"
+#include "../ui/MainWindow.h"
 
 Application::~Application() {
     shutdown();

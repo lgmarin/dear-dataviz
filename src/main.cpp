@@ -1,7 +1,7 @@
 #include <iostream>
 #include <memory>
 
-#include "Application.h"
+#include "application/Application.h"
 
 int main(int argc, char* argv[]) {
     auto app = std::make_unique<Application>();
