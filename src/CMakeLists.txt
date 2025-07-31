@@ -1,5 +1,8 @@
 # Create the executable from our main.cpp
-add_executable(dear_dataviz main.cpp)
+add_executable(dear_dataviz 
+    main.cpp
+    App.cpp
+    ui/MainWindow.cpp)
 
 # --- Integrate Dear ImGui ---
 # This is the correct way to add the ImGui source files to our executable.
@@ -16,6 +19,7 @@ target_sources(dear_dataviz PRIVATE
 target_include_directories(dear_dataviz PRIVATE
     ../libs/imgui
     ../libs/imgui/backends
+    .
     ${SDL2_INCLUDE_DIRS}
 )
 
