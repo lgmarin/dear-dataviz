@@ -1,0 +1,34 @@
+{
+    "name": "C++ SDL2 Dev Container",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+
+    // Arguments to pass to the 'docker run' command.
+    // This is crucial for forwarding the GUI display.
+    "runArgs": [
+        "--env=DISPLAY=${env:DISPLAY}",
+        "--volume=/tmp/.X11-unix:/tmp/.X11-unix:rw"
+    ],
+
+    // Configure VS Code settings inside the container
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "bash"
+            },
+            // Extensions to install inside the container
+            "extensions": [
+                "ms-vscode.cpptools-extension-pack",
+                "ms-vscode.cmake-tools"
+            ]
+        }
+    },
+
+    // Command to run after the container is created.
+    // This will initialize our git submodules automatically.
+    "postCreateCommand": "git submodule update --init --recursive",
+
+    // The user VS Code will run as inside the container.
+    "remoteUser": "vscode"
+}
