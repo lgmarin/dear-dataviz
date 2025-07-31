@@ -6,16 +6,16 @@
 struct SDL_Window;
 struct SDL_Renderer;
 
-class App final {
+class Application final {
 public:
-    App() = default;
-    ~App();
+    Application() = default;
+    ~Application();
 
     // Non-copyable, movable
-    App(const App&) = delete;
-    App& operator=(const App&) = delete;
-    App(App&&) = default;
-    App& operator=(App&&) = default;
+    Application(const Application&) = delete;
+    Application& operator=(const Application&) = delete;
+    Application(Application&&) = default;
+    Application& operator=(Application&&) = default;
 
     // @brief Initializes the application, setting up SDL and ImGui.
     // @returns Returns 0 on success, non-zero on failure.

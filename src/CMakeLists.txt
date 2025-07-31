@@ -1,7 +1,7 @@
 # Create the executable from our main.cpp
 add_executable(dear_dataviz 
     main.cpp
-    App.cpp
+    Application.cpp
     ui/MainWindow.cpp)
 
 # --- Integrate Dear ImGui ---

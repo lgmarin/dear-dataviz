@@ -1,10 +1,10 @@
 #include <iostream>
 #include <memory>
 
-#include "App.h"
+#include "Application.h"
 
 int main(int argc, char* argv[]) {
-    auto app = std::make_unique<App>();
+    auto app = std::make_unique<Application>();
 
     if (app->init() != 0) {
         return 1;

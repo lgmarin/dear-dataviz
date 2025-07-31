@@ -1,4 +1,4 @@
-#include "App.h"
+#include "Application.h"
 #include <iostream>
 #include <SDL2/SDL.h>
 #include "imgui.h"
@@ -8,24 +8,24 @@
 // Include the concrete window types
 #include "ui/MainWindow.h"
 
-App::~App() {
+Application::~Application() {
     shutdown();
 }
 
-void App::shutdown()
+void Application::shutdown()
 {
     shutdownImGui();
     shutdownSDL();
 }
 
-void App::shutdownImGui()
+void Application::shutdownImGui()
 {
     ImGui_ImplSDLRenderer2_Shutdown();
     ImGui_ImplSDL2_Shutdown();
     ImGui::DestroyContext();
 }
 
-void App::shutdownSDL()
+void Application::shutdownSDL()
 {
     if (m_renderer)
     {
@@ -38,7 +38,7 @@ void App::shutdownSDL()
     SDL_Quit();
 }
 
-int App::init() {
+int Application::init() {
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
         std::cerr << "SDL_Init Error: " << SDL_GetError() << std::endl;
         return 1;
@@ -69,13 +69,13 @@ int App::init() {
     return 0;
 }
 
-void App::setupRendererBackend()
+void Application::setupRendererBackend()
 {
     ImGui_ImplSDL2_InitForSDLRenderer(m_window, m_renderer);
     ImGui_ImplSDLRenderer2_Init(m_renderer);
 }
 
-void App::setContextConfig()
+void Application::setContextConfig()
 {
     // Setup Dear ImGui context
     IMGUI_CHECKVERSION();
@@ -85,14 +85,14 @@ void App::setContextConfig()
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 }
 
-void App::run() {
+void Application::run() {
     while (m_isRunning) {
         processEvents();
         renderUI();
     }
 }
 
-void App::processEvents() {
+void Application::processEvents() {
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
         ImGui_ImplSDL2_ProcessEvent(&event);
@@ -105,7 +105,7 @@ void App::processEvents() {
     }
 }
 
-void App::renderUI() {
+void Application::renderUI() {
     // Start the Dear ImGui frame
     ImGui_ImplSDLRenderer2_NewFrame();
     ImGui_ImplSDL2_NewFrame();
